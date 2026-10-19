@@ -1,0 +1,144 @@
+@import "tailwindcss";
+@import "../styles/tokens.css";
+
+/* ============================================================
+   Tailwind v4 theme extension via @theme
+   ============================================================ */
+@theme {
+  /* Colors wired to CSS variables */
+  --color-bg: var(--bg);
+  --color-surface: var(--surface);
+  --color-surface-container: var(--surface-container);
+  --color-text: var(--text);
+  --color-muted: var(--muted);
+  --color-text-secondary: var(--text-secondary);
+  --color-nav-text: var(--nav-text);
+  --color-pill-dark: var(--pill-dark);
+  --color-pill-dark-hover: var(--pill-dark-hover);
+  --color-trust-bg: var(--trust-bg);
+  --color-trust-text: var(--trust-text);
+
+  /* Font families */
+  --font-family-sans: var(
+    --font-sans,
+    "Inter",
+    "Segoe UI",
+    system-ui,
+    sans-serif
+  );
+  --font-family-display: var(--font-display);
+
+  /* Box shadows */
+  --shadow-nav: var(--nav-shadow);
+  --shadow-glow: var(--glow-white);
+}
+
+/* ============================================================
+   Base resets
+   ============================================================ */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  height: 100%;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  height: 100%;
+  overflow-x: hidden;
+}
+
+:is(a[href], button) {
+  cursor: pointer;
+  transition:
+    color 180ms ease,
+    background-color 180ms ease,
+    border-color 180ms ease,
+    box-shadow 180ms ease,
+    opacity 180ms ease,
+    transform 220ms cubic-bezier(0.22, 1, 0.36, 1),
+    scale 200ms cubic-bezier(0.22, 1, 0.36, 1),
+    filter 140ms ease;
+}
+
+button:not(:disabled):hover {
+  scale: 1.03;
+}
+
+:is(a[href], button):active {
+  scale: 0.98;
+}
+
+/* ============================================================
+   Viewport lock for home page only
+   Applied via .viewport-lock on <main>
+   ============================================================ */
+.viewport-lock {
+  height: 100vh;
+  height: 100dvh;
+  overflow: hidden;
+}
+
+/* ============================================================
+   Nav pill active dot indicator (3 dots via box-shadow)
+   ============================================================ */
+.nav-link-active::after {
+  content: "";
+  position: absolute;
+  bottom: 5px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  background: #000;
+  box-shadow:
+    -5px 0 0 #000,
+    5px 0 0 #000;
+}
+
+/* ============================================================
+   Mobile burger animation
+   ============================================================ */
+.burger-bar {
+  display: block;
+  width: 18px;
+  height: 1.5px;
+  background: #fff;
+  transition:
+    transform 0.25s cubic-bezier(0.22, 1, 0.36, 1),
+    opacity 0.2s ease;
+  transform-origin: center;
+}
+
+.burger-open .burger-bar:nth-child(1) {
+  transform: translateY(6.5px) rotate(45deg);
+  background: #000;
+}
+.burger-open .burger-bar:nth-child(2) {
+  opacity: 0;
+}
+.burger-open .burger-bar:nth-child(3) {
+  transform: translateY(-6.5px) rotate(-45deg);
+  background: #000;
+}
+
+/* ============================================================
+   Reduced motion — override all animations
+   ============================================================ */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

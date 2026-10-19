@@ -1,0 +1,62 @@
+/* ============================================================
+   Design Tokens — Intelligence Designed To Evolve
+   Self-hosted BubbledotICG-FinePos with GeistPixel fallback
+   ============================================================ */
+
+@font-face {
+  font-family: "BubbledotICG-FinePos";
+  src: url("/fonts/BubbledotICG-FinePos.woff2") format("woff2"),
+       url("/fonts/GeistPixel-Circle.woff2") format("woff2");
+  font-weight: 400;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Geist Pixel Circle";
+  src: url("/fonts/GeistPixel-Circle.woff2") format("woff2");
+  font-weight: 400;
+  font-display: swap;
+}
+
+:root {
+  /* === Core surfaces === */
+  --bg:              #000000;
+  --surface:         #111113;
+  --surface-container: #1c1c1f;
+  --text:            #ffffff;
+  --muted:           #8e8e8e;
+  --text-secondary:  #c8c8c8;
+
+  /* === Navigation & pills === */
+  --nav-text:        #2e2e2e;
+  --pill-dark:       #28282a;
+  --pill-dark-hover: #323234;
+  --sign-in-text:    #c8c8c8;
+
+  /* === Trust badge === */
+  --trust-bg:     #28282a;
+  --trust-border: rgba(255, 255, 255, 0.4);
+  --trust-text:   #c4c2c3;
+
+  /* === Structural borders === */
+  --border-subtle: rgba(255, 255, 255, 0.1);
+  --border-medium: rgba(255, 255, 255, 0.15);
+
+  /* === Shadows & Glows === */
+  --nav-shadow: 0 4px 14px rgba(0, 0, 0, 0.16);
+  --glow-white:
+    0 0 0 1px rgba(255, 255, 255, 0.15),
+    0 0 22px rgba(255, 255, 255, 0.32),
+    0 0 44px rgba(255, 255, 255, 0.12);
+  --glow-white-hover:
+    0 0 0 1px rgba(255, 255, 255, 0.25),
+    0 0 28px rgba(255, 255, 255, 0.45),
+    0 0 60px rgba(255, 255, 255, 0.18);
+
+  /* === Typography stacks === */
+  --font-display: "BubbledotICG-FinePos", "Geist Pixel Circle", monospace;
+  --font-mono:    var(--font-mono, "Space Mono", "Courier New", monospace);
+
+  /* === Trust badge sizing === */
+  --trust-size: clamp(36px, 4.5vw, 42px);
+}
